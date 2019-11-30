@@ -54,6 +54,117 @@ Module Module1
         Next
 
     End Function
+    Public Function GetScriptNames(strSCtemp As String) As Dictionary(Of String, String)
+        'Void AddSC_boss_moroes()
+        '{
+        'Script* newscript;
+
+        'newscript = New Script;
+        'newscript-> Name = "boss_moroes";
+        'newscript-> GetAI = & GetAI_boss_moroes;
+        'newscript-> RegisterSelf();
+
+        'newscript = New Script;
+        'newscript-> Name = "boss_baroness_dorothea_millstipe";
+        'newscript-> GetAI = & GetAI_baroness_dorothea_millstipe;
+        'newscript-> RegisterSelf();
+
+        'get script name from module
+        strSCtemp = strSCtemp.Replace(vbCr, vbCrLf)
+        strSCtemp = strSCtemp.Replace(vbLf, vbCrLf)
+        strSCtemp = strSCtemp.Replace(" ", "")
+        strSCtemp = strSCtemp.Replace(vbTab, "")
+        Dim arr
+        arr = Split(strSCtemp, vbCrLf)
+
+        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each subLine In arr
+            'newscript-> Name = "boss_moroes";
+
+            Dim subName As String = SearchMidString(subLine, "->Name=""", """;").Trim
+            If subName.Trim = "" Then
+                'Exit For
+            Else
+                If Not dictTemp.ContainsKey(subName) Then
+                    dictTemp.Add(subName, "")
+                End If
+
+            End If
+
+        Next
+        Return dictTemp
+
+
+    End Function
+
+    Public Function GetCreatureAINames(ByVal fileContent As String, ByVal dictOrg As Dictionary(Of String, String), ByRef comments As String)
+        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each subKey In dictOrg
+            If subKey.Key <> "" Then
+                Dim strStart As String = "CreatureAI* GetAI_" & subKey.Key
+                Dim strEnd As String = "};"
+                If InStr(fileContent, strStart) <> 0 Then
+                    Dim strTemp As String = Mid(fileContent, InStr(fileContent, strStart))
+                    Dim found As String = Microsoft.VisualBasic.Left(strTemp, InStr(strTemp, strEnd)) ' SearchMidString(fileContent, strStart, strEnd)
+                    dictTemp.Add(subKey.Key, strStart & found & strEnd)
+                Else
+                    comments &= " " & subKey.Key & " not found"
+                End If
+            End If
+        Next
+        Return dictTemp
+    End Function
+
+    Public Function GetStructNames(ByVal fileContent As String, ByVal dictOrg As Dictionary(Of String, String), ByRef comments As String)
+        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each subKey In dictOrg
+            If subKey.Key <> "" Then
+                Dim strStart As String = "struct " & subKey.Key & "AI"
+                Dim strEnd As String = "}"
+                If InStr(fileContent, strStart) <> 0 Then
+                    Dim strTemp As String = Mid(fileContent, InStr(fileContent, strStart))
+                    Dim found As String = Microsoft.VisualBasic.Left(strTemp, InStr(strTemp, strEnd)) 'SearchMidString(fileContent, strStart, strEnd)
+                    dictTemp.Add(subKey.Key, strStart & found & strEnd)
+
+                Else
+                    comments &= " " & subKey.Key & " not found"
+                End If
+            End If
+        Next
+        Return dictTemp
+    End Function
+
+    Public Function GetFuncionHookRelation(strSCtemp As String) As Dictionary(Of String, String)
+        strSCtemp = strSCtemp.Replace(vbCr, vbCrLf)
+        strSCtemp = strSCtemp.Replace(vbLf, vbCrLf)
+        Dim arr
+        arr = Split(strSCtemp, vbCrLf)
+
+        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each subLine In arr
+            'newscript->pGossipHello = &GossipHello_custom_example;
+
+            Dim subFunc As String = SearchMidString(subLine, "->", "=").Trim
+            If subFunc.Trim = "" Then
+                'Exit For
+            Else
+                Dim subFuncName As String
+                If InStr(subLine, "&") <> 0 Then
+                    subFuncName = SearchMidString(subLine, "&", ";").Trim.Trim
+                    If subFunc.Trim <> "" Then
+                        If Not dictTemp.ContainsKey(subFuncName) Then
+                            dictTemp.Add(subFuncName, subFunc) 'GossipHello_custom_example  pGossipHello
+                        End If
+                    End If
+
+                End If
+
+
+            End If
+
+        Next
+        Return dictTemp
+    End Function
 
     Public Function GetFunctionsNames(strSCtemp As String) As Dictionary(Of String, String)
         strSCtemp = strSCtemp.Replace(vbCr, vbCrLf)

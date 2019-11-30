@@ -16,13 +16,14 @@
 
 4, find script start and stop point using script_name as key word, if no match find, list and may do it manually
 
-	struct script_nameAI : public ScriptedAI
-	{
-	}
-	CreatureAI* GetAI_script_name(Creature* pCreature)
-	{
-		return new script_nameAI (pCreature);
-	}
+			struct script_nameAI : public ScriptedAI
+			{
+				   script_nameAI(Creature* c) : ScriptedAI(c) {}
+			};
+			CreatureAI* GetAI_script_name(Creature* pCreature)
+			{
+				return new script_nameAI (pCreature);
+			}
 
 	then include it into a new portion
 
@@ -30,8 +31,8 @@
 	{
 	public:
 		script_name() : CreatureScript("script_name") { }
-		
 
+    
 	};
 	
 5, replace original content inside void AddSC* to new

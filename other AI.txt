@@ -1,0 +1,14 @@
+class item_defias_gunpowder : public ItemScript
+{
+public:
+    item_defias_gunpowder() : ItemScript("item_defias_gunpowder") { }
+
+    bool OnUse(Player* player, Item* item, SpellCastTargets const& targets) override
+    {
+
+    }
+};
+void AddSC_deadmines()
+{
+    new item_defias_gunpowder();
+}

@@ -93,8 +93,106 @@ Public Class Form1
                     'get script count
                     Dim intScCount As Integer = CountStringExistsNumber(strSCtemp, "->Name")
                     If Not intScCount = 1 Then
-                        ReportTable.Rows.Add(f, "complex", "file has multiple more script name")
-                        Exit Sub
+                        'ReportTable.Rows.Add(f, "complex", "file has multiple more script name")
+                        'Exit Sub
+                        Dim comments As String = ""
+                        'get script name
+                        Dim dictSCnames As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                        Dim dictNameKeyStructValue As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                        Dim dictNameKeyCreatureAIValue As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                        dictSCnames = GetScriptNames(strSCtemp)
+
+                        'get struct, start with struct script_nameAI : Public ScriptedAI and end with  first }; found
+                        dictNameKeyStructValue = GetStructNames(FileContent, dictSCnames, comments)
+                        'struct script_nameAI : Public ScriptedAI
+                        '{
+                        '	   script_nameAI(Creature * c) : ScriptedAI(c) {}
+                        '};
+
+                        'get CreatureAI* GetAI_script_name, end with first } found
+                        dictNameKeyCreatureAIValue = GetCreatureAINames(FileContent, dictSCnames, comments)
+                        'CreatureAI* GetAI_script_name(Creature * pCreature)
+                        '{
+                        '	Return New script_nameAI(pCreature);
+                        '}
+
+                        'remove Struct and Creature AI
+                        For Each subkey In dictNameKeyStructValue
+                            FileContent = FileContent.Replace(subkey.Value, "")
+                        Next
+                        For Each subkey In dictNameKeyCreatureAIValue
+                            FileContent = FileContent.Replace(subkey.Value, "")
+                        Next
+
+                        'get hook mapping 
+                        Dim dictFunctionKeyHookValue As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                        dictFunctionKeyHookValue = GetFuncionHookRelation(strSCtemp) ' key GossipHello_custom_example  value pGossipHello
+                        'replace hooks within struct one module by one module
+                        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                        For Each subSturct In dictNameKeyStructValue
+                            For Each subkey In dictFunctionKeyHookValue
+                                'make sure we have the mapping in that table otherwise stop and ignore
+                                If subkey.Value <> "GetAI" Then
+                                    If DictFunctionMapping.ContainsKey(subkey.Value) Then
+                                        If dictTemp.ContainsKey(subSturct.Key) Then
+                                            dictTemp(subSturct.Key) = dictNameKeyStructValue(subSturct.Key).Replace(subkey.Key & "(", DictFunctionMapping(subkey.Value) & "(")
+                                        Else
+                                            dictTemp.Add(subSturct.Key, dictNameKeyStructValue(subSturct.Key).Replace(subkey.Key & "(", DictFunctionMapping(subkey.Value) & "("))
+                                        End If
+                                    Else
+                                        comments &= " " & subkey.Value & " has no mapping in mapping table"
+                                    End If
+                                End If
+
+                            Next
+                        Next
+                        dictNameKeyStructValue = dictTemp
+                        'make new AddSC portion
+                        Dim scname As String
+                        For Each subkey In dictSCnames
+                            If subkey.Key.Trim <> "" Then
+                                scname &= "    new " & subkey.Key.Trim & "();" & vbCrLf
+                            End If
+                        Next
+                        '///now it is safe we create a new void AddSC module
+                        Dim scNewt As String = Microsoft.VisualBasic.Left(strSCtemp, InStr(strSCtemp, "{") - 1) 'now we should have void AddSC*
+                        scNewt = scNewt.Trim().Replace(vbCrLf, "") & vbCrLf &
+                            "{" & vbCrLf &
+                            scname & vbCrLf &
+                            "}"
+
+                        '///also making new class
+                        Dim strNewStuct As String = ""
+                        For Each subkey In dictNameKeyStructValue
+                            If subkey.Key.Trim <> "" Then
+                                strNewStuct &= AddingIndentAndMakeNewClass(subkey.Value, subkey.Key) & vbCrLf & vbCrLf
+                            End If
+                        Next
+
+                        TextBox1.Text = FileContent
+                        TextBox2.Text = strNewStuct
+                        TextBox3.Text = scNewt
+
+
+                        Dim strFinal As String = FileContent & vbCrLf
+                        strFinal &= strNewStuct & vbCrLf
+                        strFinal &= scNewt & vbCrLf
+
+                        '///now we should able to write this file
+                        'WriteNewFile("D:\test.txt", strFinalContent)
+                        If comments.Trim = "" Then
+                            WriteNewFile(f, strFinal)
+                            ReportTable.Rows.Add(f, "done", "converted")
+                        Else
+                            ReportTable.Rows.Add(f, "partical", comments)
+                        End If
+
+
+
+
+                    Else
+   
+
                     End If
 
                     'get function names for replacement purpose
