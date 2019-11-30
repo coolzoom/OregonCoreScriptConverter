@@ -22,6 +22,7 @@ Partial Class Form1
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -34,16 +35,19 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(707, 449)
+        Me.Button1.Location = New System.Drawing.Point(467, 449)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(175, 60)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Select Folder"
+        Me.ToolTip1.SetToolTip(Me.Button1, "Select folder and parse")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'DataGridView1
@@ -64,11 +68,12 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(928, 449)
+        Me.Button2.Location = New System.Drawing.Point(648, 449)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(175, 60)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "Export Report"
+        Me.ToolTip1.SetToolTip(Me.Button2, "Export parese report")
         Me.Button2.UseVisualStyleBackColor = True
         '
         'TextBox1
@@ -134,11 +139,22 @@ Partial Class Form1
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Third Part(void AddSC)"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(829, 449)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(175, 60)
+        Me.Button3.TabIndex = 11
+        Me.Button3.Text = "Export Functions"
+        Me.ToolTip1.SetToolTip(Me.Button3, "export temp functions for analysis purpose")
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1141, 523)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -170,4 +186,6 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents Button3 As Button
 End Class

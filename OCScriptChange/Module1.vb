@@ -1,9 +1,130 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 
 Module Module1
     Public dictFileLists As Dictionary(Of String, String)
-    Public RootDirectory As String = "H:\WOWServer\Source\OregonCore\src\scripts"
+    Public OCScriptFolder As String
     Public ReportTable As System.Data.DataTable
+    Public ScriptFunctionLists As Dictionary(Of String, String)
+
+    Public DictFunctionMapping As Dictionary(Of String, String) = New Dictionary(Of String, String) _
+        From {
+    {"pGossipHello", "OnGossipHello"},
+    {"pGossipSelect", "OnGossipSelect"},
+    {"pGossipSelectWithCode", "OnGossipSelectCode"},
+    {"pQuestAccept", "OnQuestAccept"},
+    {"GoQuestComplete", "OnQuestComplete"},
+    {"pAreaTrigger", "OnTrigger"},
+    {"pGOHello", "OnGossipHello"},
+    {"pChooseReward", "OnQuestReward"},
+    {"GetInstanceData", "OnGetInstanceData"},
+    {"pItemUse", "OnItemUse"},
+    {"pEffectDummyCreature", "OnDummyEffect"},
+    {"pQuestComplete", "OnQuestComplete"},
+    {"pGOQuestAccept", "OnQuestAccept"},
+    {"pGOSelect", "OnGossipSelect"}
+    }
+
+    Public Function GetFunctions(ByVal strAddSC As String)
+        ''///REGEX METHOD
+        'Dim expr As String = strstart & "S*" & strEnd
+        'Dim mc As MatchCollection = Regex.Matches(strContent, expr)
+        'Dim m As Match
+        'For Each m In mc
+        '    If Not ScriptFunctionLists.ContainsKey(m.Value) Then
+        '        ScriptFunctionLists.Add(m.Value, m.Value)
+        '    End If
+        '    'Console.WriteLine(m)
+        'Next m
+        'simple method
+        strAddSC = strAddSC.Replace(vbCr, vbCrLf)
+        strAddSC = strAddSC.Replace(vbLf, vbCrLf)
+        Dim arr
+        arr = Split(strAddSC, vbCrLf)
+        For Each subLine In arr
+            Dim subFunc As String = SearchMidString(subLine, "->", "=")
+            If subFunc.Trim = "" Then
+                'Exit For
+            Else
+                If Not ScriptFunctionLists.ContainsKey(subFunc) Then
+                    ScriptFunctionLists.Add(subFunc, subFunc)
+                End If
+            End If
+
+        Next
+
+    End Function
+
+    Public Function GetFunctionsNames(strSCtemp As String) As Dictionary(Of String, String)
+        strSCtemp = strSCtemp.Replace(vbCr, vbCrLf)
+        strSCtemp = strSCtemp.Replace(vbLf, vbCrLf)
+        Dim arr
+        arr = Split(strSCtemp, vbCrLf)
+
+        Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each subLine In arr
+            'newscript->pGossipHello = &GossipHello_custom_example;
+
+            Dim subFunc As String = SearchMidString(subLine, "->", "=").Trim
+            If subFunc.Trim = "" Then
+                'Exit For
+            Else
+                Dim subFuncName As String
+                If InStr(subLine, "&") <> 0 Then
+                    subFuncName = SearchMidString(subLine, "&", ";").Trim.Trim
+                    If subFunc.Trim <> "" Then
+                        If Not dictTemp.ContainsKey(subFunc) Then
+                            dictTemp.Add(subFunc, subFuncName)
+                        End If
+                    End If
+
+                End If
+
+
+            End If
+
+        Next
+        Return dictTemp
+
+    End Function
+
+    Public Function SearchMidString(ByVal s As String, ByVal s1 As String, ByVal s2 As String) As String
+        '        Dim strAll As String = "<PName1>654321</PName1><PName2>123456</PName2>"
+
+        '        Dim strResult As String = SearchMidString(strAll, "<PName2>", "</PName2>")
+
+        'result   strResult = "123456"
+        Try
+            Dim n1 As Integer, n2 As Integer
+            n1 = s.IndexOf(s1, 0) + s1.Length
+            n2 = s.IndexOf(s2, n1)
+            Return s.Substring(n1, n2 - n1)
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
+
+    Public Function SearchMidStringByContain(ByVal sAll As String, ByVal sQur As String, ByVal s1 As String, ByVal s2 As String) As String
+        '        Dim strAll As String = "12<-34567->8998<-76543->21"
+
+        '        Dim strResult As String = SearchMidStringByContain(strAll, "65", "<-", "->")
+
+        'result     strResult = "76543"
+
+        If sAll.Contains(sQur) = False Then Return ""
+        Try
+            Dim nQur As Integer = sAll.IndexOf(sQur, 0)
+            Dim sLeft As String = Microsoft.VisualBasic.Left(sAll, nQur)
+            Dim sRight As String = Microsoft.VisualBasic.Right(sAll, sAll.Length - nQur - sQur.Length)
+            Dim n1 As Integer, n2 As Integer
+            n1 = sLeft.LastIndexOf(s1) + s1.Length
+            n2 = sRight.IndexOf(s2)
+            Return sAll.Substring(n1, sLeft.Length + sQur.Length + n2 - n1)
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
+
     Public Sub GetAllFiles(ByVal strDirect As String)  'get all files in a folder
         If Not (strDirect Is Nothing) Then
             Dim mFileInfo As System.IO.FileInfo
@@ -32,8 +153,8 @@ Module Module1
         obj.RootFolder = Environment.SpecialFolder.Desktop
         With obj
             .ShowDialog()
-            RootDirectory = .SelectedPath
-            If Not Directory.Exists(RootDirectory) Then
+            OCScriptFolder = .SelectedPath
+            If Not Directory.Exists(OCScriptFolder) Then
                 MsgBox("Please select a folder")
             End If
         End With
@@ -90,6 +211,38 @@ Module Module1
             arr = Split(strCont, vbCrLf)
             For Each strLine In arr
                 sw.WriteLine(strLine)
+                sw.Flush()
+            Next
+            sw.Close()
+            sw = Nothing
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Public Sub exportDict_to_File(ByVal dict As Dictionary(Of String, String))
+
+        Try
+            Dim strFilePath As String
+            Dim obj As New FolderBrowserDialog
+            obj.RootFolder = Environment.SpecialFolder.Desktop
+            With obj
+                .ShowDialog()
+                strFilePath = .SelectedPath
+                If Not Directory.Exists(strFilePath) Then
+                    MsgBox("Please select a folder")
+                    Exit Sub
+                End If
+            End With
+
+            strFilePath = strFilePath & "\FunctionReport.txt"
+
+            Dim sw As StreamWriter = New StreamWriter(strFilePath, False) 'true is append 
+
+            For Each subKey In dict
+                sw.WriteLine(subKey.Key)
                 sw.Flush()
             Next
             sw.Close()

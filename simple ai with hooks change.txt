@@ -1,0 +1,33 @@
+this step will process those file which has only 1 script per file and replace the function name to hooks then do similar as simple ai replacement
+
+1. get all hooks from AddSC module
+
+newscript->pGossipHello = &GossipHello_custom_example;
+      
+pGossipHello 
+pGossipSelect 
+pAreaTrigger 
+pGOHello 
+pQuestAccept 
+GoQuestComplete 
+pChooseReward 
+GetInstanceData 
+pItemUse 
+pEffectDummyCreature 
+pQuestComplete 
+pGOQuestAccept 
+pGOHello  
+pGOSelect 
+
+
+2, make a mapping table 
+
+{"pGossipHello", "OnGossipHello"},
+
+3, replace functions according to the mapping
+
+from
+bool GossipSelect_custom_example(Player* pPlayer, Creature* pCreature, uint32 uiSender, uint32 uiAction)
+
+to 
+bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)

@@ -1,0 +1,379 @@
+H:\WOWServer\Source\OregonCore\src\scripts\Custom\custom_example.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Custom\custom_gossip_codebox.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Custom\on_events.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Custom\test.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\alterac_mountains.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\arathi_highlands.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\blasted_lands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\boss_kruul.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\burning_steppes.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\dun_morogh.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\duskwood.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\eastern_plaguelands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\elwynn_forest.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\eversong_woods.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ghostlands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\hillsbrad_foothills.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\hinterlands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ironforge.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\isle_of_queldanas.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\loch_modan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Myzrael.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\redridge_mountains.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\searing_gorge.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\silvermoon_city.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\silverpine_forest.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\stormwind_city.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\stranglethorn_vale.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\swamp_of_sorrows.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\tirisfal_glades.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\undercity.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\western_plaguelands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\westfall.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\wetlands.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\AlteracValley\alterac_valley.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\AlteracValley\boss_balinda.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\AlteracValley\boss_drekthar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\AlteracValley\boss_galvangar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\AlteracValley\boss_vanndar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\blackrock_depths.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_ambassador_flamelash.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_anubshiah.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_emperor_dagran_thaurissan.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_general_angerforge.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_gorosh_the_dervish.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_grizzle.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_high_interrogator_gerstahn.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_magmus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_moira_bronzebeard.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\boss_tomb_of_seven.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockDepths\instance_blackrock_depths.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_drakkisath.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_gyth.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_halycon.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_highlord_omokk.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_mother_smolderweb.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_overlord_wyrmthalak.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_pyroguard_emberseer.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_quartermaster_zigris.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_rend_blackhand.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_shadow_hunter_voshgajin.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_the_beast.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackrockSpire\boss_warmaster_voone.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_broodlord_lashlayer.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_chromaggus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_ebonroc.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_firemaw.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_flamegor.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_nefarian.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_razorgore.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_vaelastrasz.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\boss_victor_nefarius.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\BlackwingLair\instance_blackwing_lair.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Deadmines\boss_mr_smite.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Deadmines\deadmines.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Deadmines\instance_deadmines.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Gnomeregan\gnomeregan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Gnomeregan\instance_gnomeregan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\bosses_opera.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_curator.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_maiden_of_virtue.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_midnight.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_moroes.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_netherspite.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_nightbane.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_prince_malchezaar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_shade_of_aran.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\boss_terestian_illhoof.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\chess_event.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\instance_karazhan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Karazhan\karazhan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\boss_felblood_kaelthas.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\boss_priestess_delrissa.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\boss_selin_fireheart.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\boss_vexallus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\instance_magisters_terrace.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MagistersTerrace\magisters_terrace.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_baron_geddon.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_garr.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_gehennas.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_golemagg.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_lucifron.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_magmadar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_majordomo_executus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_ragnaros.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_shazzrah.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\boss_sulfuron_harbinger.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\instance_molten_core.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\MoltenCore\molten_core.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_anubrekhan.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_faerlina.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_four_horsemen.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_gluth.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_gothik.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_grobbulus.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_heigan.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_highlord_mograine.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_kelthuzad.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_loatheb.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_maexxna.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_noth.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_patchwerk.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_razuvious.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_sapphiron.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\boss_thaddius.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Naxxramas\instance_naxxramas.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_arcanist_doan.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_azshir_the_sleepless.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_bloodmage_thalnos.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_headless_horseman.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_herod.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_high_inquisitor_fairbanks.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_houndmaster_loksey.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_interrogator_vishas.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_mograine_and_whitemane.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\boss_scorn.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ScarletMonastery\instance_scarlet_monastery.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_darkmaster_gandling.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_death_knight_darkreaver.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_doctor_theolen_krastinov.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_illucia_barov.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_instructor_malicia.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_jandice_barov.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_kormok.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_lord_alexei_barov.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_lorekeeper_polkelt.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_ras_frostwhisper.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_the_ravenian.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\boss_vectus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Scholomance\instance_scholomance.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ShadowfangKeep\boss_archmage_arugal.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ShadowfangKeep\instance_shadowfang_keep.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ShadowfangKeep\shadowfang_keep.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_baroness_anastari.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_baron_rivendare.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_cannon_master_willey.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_dathrohan_balnazzar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_magistrate_barthilas.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_maleki_the_pallid.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_nerubenkan.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_order_of_silver_hand.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_postmaster_malown.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_ramstein_the_gorger.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\boss_timmy_the_cruel.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\instance_stratholme.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Stratholme\stratholme.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunkenTemple\boss_eranikus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunkenTemple\boss_jammal.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunkenTemple\instance_sunken_temple.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunkenTemple\sunken_temple.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_brutallus.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_eredar_twins.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_felmyst.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_kalecgos.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_kiljaeden.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\boss_muru.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\instance_sunwell_plateau.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\SunwellPlateau\sunwell_plateau.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Uldaman\boss_archaedas.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Uldaman\boss_ironaya.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Uldaman\instance_uldaman.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\Uldaman\uldaman.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_akilzon.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_halazzi.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_hexlord.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_janalai.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_nalorakk.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\boss_zuljin.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\instance_zulaman.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulAman\zulaman.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_arlokk.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_gahzranka.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_grilek.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_hakkar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_hazzarah.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_jeklik.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_jindo.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_mandokir.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_marli.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_renataki.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_thekal.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_venoxis.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\boss_wushoolay.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\EasternKingdoms\ZulGurub\instance_zulgurub.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\ashenvale.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\azshara.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\azuremyst_isle.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\bloodmyst_isle.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\boss_azuregos.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\darkshore.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\desolace.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\durotar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\dustwallow_marsh.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\felwood.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\feralas.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\moonglade.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\mulgore.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\orgrimmar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\silithus.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\stonetalon_mountains.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\tanaris.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\teldrassil.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\the_barrens.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\thousand_needles.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\thunder_bluff.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\ungoro_crater.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\winterspring.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\BlackfathomDeeps\blackfathom_deeps.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\BlackfathomDeeps\boss_aku_mai.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\BlackfathomDeeps\boss_gelihast.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\BlackfathomDeeps\boss_kelris.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\BlackfathomDeeps\instance_blackfathom_deeps.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\dark_portal\boss_aeonus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\dark_portal\boss_chrono_lord_deja.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\dark_portal\boss_temporus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\dark_portal\dark_portal.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\dark_portal\instance_dark_portal.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\boss_anetheron.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\boss_archimonde.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\boss_azgalor.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\boss_kazrogal.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\boss_rage_winterchill.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\hyjal.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\hyjalAI.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\hyjal_trash.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\hyjal\instance_hyjal.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\old_hillsbrad\boss_captain_skarloc.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\old_hillsbrad\boss_epoch_hunter.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\old_hillsbrad\boss_leutenant_drake.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\old_hillsbrad\instance_old_hillsbrad.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\CavernsOfTime\old_hillsbrad\old_hillsbrad.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\Maraudon\boss_celebras_the_cursed.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\Maraudon\boss_landslide.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\Maraudon\boss_noxxion.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\Maraudon\boss_princess_theradras.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\OnyxiasLair\boss_onyxia.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RazorfenDowns\boss_amnennar_the_coldbringer.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RazorfenDowns\instance_razorfen_downs.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RazorfenDowns\razorfen_downs.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RazorfenKraul\instance_razorfen_kraul.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RazorfenKraul\razorfen_kraul.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_ayamiss.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_buru.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_kurinnaxx.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_moam.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_ossirian.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\boss_rajaxx.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\RuinsOfAhnQiraj\instance_ruins_of_ahnqiraj.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_bug_trio.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_cthun.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_fankriss.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_huhuran.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_ouro.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_sartura.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_skeram.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_twinemperors.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\boss_viscidus.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\instance_temple_of_ahnqiraj.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\TempleOfAhnQiraj\mob_anubisath_sentinel.cpp	complex	could not found struct mob_anubisath_sentinelAI
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\WailingCaverns\instance_wailing_caverns.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\WailingCaverns\wailing_caverns.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\ZulFarrak\instance_zulfarrak.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Kalimdor\ZulFarrak\zulfarrak.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\blades_edge_mountains.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\boss_doomlord_kazzak.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\boss_doomwalker.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\hellfire_peninsula.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\nagrand.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\netherstorm.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\shadowmoon_valley.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\shattrath_city.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\terokkar_forest.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\zangarmarsh.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\auchenai_crypts\boss_exarch_maladaar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\auchenai_crypts\boss_shirrak_the_dead_watcher.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\mana_tombs\boss_nexusprince_shaffar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\mana_tombs\boss_pandemonius.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\sethekk_halls\boss_anzu.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\sethekk_halls\boss_darkweaver_syth.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\sethekk_halls\boss_tailonking_ikiss.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\sethekk_halls\instance_sethekk_halls.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\shadow_labyrinth\boss_ambassador_hellmaw.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\shadow_labyrinth\boss_blackheart_the_inciter.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\shadow_labyrinth\boss_grandmaster_vorpil.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\shadow_labyrinth\boss_murmur.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\Auchindoun\shadow_labyrinth\instance_shadow_labyrinth.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\black_temple.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_bloodboil.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_illidan.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_mother_shahraz.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_reliquary_of_souls.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_shade_of_akama.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_supremus.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_teron_gorefiend.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\boss_warlord_najentus.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\illidari_council.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\BlackTemple\instance_black_temple.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_fathomlord_karathress.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_hydross_the_unstable.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_lady_vashj.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_leotheras_the_blind.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_lurker_below.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\boss_morogrim_tidewalker.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\serpent_shrine\instance_serpent_shrine.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\steam_vault\boss_hydromancer_thespia.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\steam_vault\boss_mekgineer_steamrigger.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\steam_vault\boss_warlord_kalithresh.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\steam_vault\instance_steam_vault.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\underbog\boss_hungarfen.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\CoilfangReservoir\underbog\boss_the_black_stalker.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\GruulsLair\boss_gruul.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\GruulsLair\boss_high_king_maulgar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\GruulsLair\instance_gruuls_lair.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\blood_furnace\boss_broggok.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\blood_furnace\boss_kelidan_the_breaker.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\blood_furnace\boss_the_maker.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\blood_furnace\instance_blood_furnace.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\hellfire_ramparts\boss_omor_the_unscarred.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\hellfire_ramparts\boss_vazruden_the_herald.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\hellfire_ramparts\boss_watchkeeper_gargolmar.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\hellfire_ramparts\instance_hellfire_ramparts.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\magtheridons_lair\boss_magtheridon.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\magtheridons_lair\instance_magtheridons_lair.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\boss_blood_guard_porung.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\boss_nethekurse.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\boss_warbringer_omrogg.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\boss_warchief_kargath_bladefist.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\instance_shattered_halls.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\HellfireCitadel\shattered_halls\shattered_halls.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\arcatraz\arcatraz.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\arcatraz\boss_harbinger_skyriss.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\arcatraz\instance_arcatraz.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\botanica\boss_high_botanist_freywinn.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\botanica\boss_laj.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\botanica\boss_warp_splinter.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\boss_alar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\boss_astromancer.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\boss_kaelthas.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\boss_void_reaver.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\instance_the_eye.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_eye\the_eye.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\boss_gatewatcher_gyrokill.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\boss_gatewatcher_ironhand.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\boss_mechano_lord_capacitus.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\boss_nethermancer_sepethrea.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\boss_pathaleon_the_calculator.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\Outland\TempestKeep\the_mechanar\instance_mechanar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\PrecompiledHeaders\ScriptPCH.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\World\areatrigger_scripts.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\World\boss_emeriss.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\World\boss_lethon.cpp	ignore	no script module
+H:\WOWServer\Source\OregonCore\src\scripts\World\boss_taerar.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\boss_ysondre.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\go_scripts.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\guards.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\item_scripts.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\mob_generic_creature.cpp	done	file already converted
+H:\WOWServer\Source\OregonCore\src\scripts\World\npcs_special.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\npc_innkeeper.cpp	manual	file has one more script type inside
+H:\WOWServer\Source\OregonCore\src\scripts\World\npc_professions.cpp	manual	file has one more script type inside

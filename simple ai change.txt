@@ -1,0 +1,43 @@
+1. loop script folder and list all cpp file
+
+2, filter those file that has below content inside, those are the "old" structure
+
+	void AddSC*
+	{
+		*RegisterSelf();
+	}
+
+3, get the script name from the AddSC portion, do the cpp that has only 1 script name for now, leave those cpp which have several scripts later.
+   do those has only ->Name, ->GetAI, ->RegisterSelf,
+	void AddSC*
+	{
+		*->Name = "script_name";
+	}
+
+4, find script start and stop point using script_name as key word, if no match find, list and may do it manually
+
+	struct script_nameAI : public ScriptedAI
+	{
+	}
+	CreatureAI* GetAI_script_name(Creature* pCreature)
+	{
+		return new script_nameAI (pCreature);
+	}
+
+	then include it into a new portion
+
+	class script_name: public CreatureScript
+	{
+	public:
+		script_name() : CreatureScript("script_name") { }
+		
+
+	};
+	
+5, replace original content inside void AddSC* to new
+
+	void AddSC*
+	{
+		new script_name(); //*->Name = "script_name";
+	}
+6, maual check

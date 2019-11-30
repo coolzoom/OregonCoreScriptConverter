@@ -7,14 +7,20 @@ Imports System.IO
 Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GetDirectoryPath()
-        If Not Directory.Exists(RootDirectory) Then
+        OCScriptFolder = "H:\WOWServer\Source\OregonCore\src\scripts"
+        'GetDirectoryPath()
+        If Not Directory.Exists(OCScriptFolder) Then
             Exit Sub
         End If
+        'initial function dict
+        ScriptFunctionLists = New Dictionary(Of String, String)
 
         'get all cpp files
+
         dictFileLists = New Dictionary(Of String, String)
-        GetAllFiles(RootDirectory)
+
+
+        GetAllFiles(OCScriptFolder)
         'list number
         MsgBox(dictFileLists.Count)
         'initial report table
@@ -64,15 +70,38 @@ Public Class Form1
                 strSCtemp = Microsoft.VisualBasic.Left(strSCtemp, SCEndPosition)
                 'MsgBox(strSCtemp)
 
+                '///now check if the module already converted by look at the SC part see if there is Script* included
+                Dim converted As Boolean = (InStr(strSCtemp, "Script*") = 0)
+                If converted Then
+                    ReportTable.Rows.Add(f, "done", "file already converted")
+                    Exit Sub
+                End If
+
                 '///now make sure our sc module only has ->Name, ->GetAI, ->RegisterSelf
-                Dim oktoprocess As Boolean = (InStr(strSCtemp, "->Name") <> 0 And
-                                             InStr(strSCtemp, "->GetAI") <> 0 And
-                                             InStr(strSCtemp, "->RegisterSelf") <> 0 And
-                                             CountStringExistsNumber(strSCtemp, "->") = 3)
+                Dim oktoprocess As Boolean = (InStr(strSCtemp, "->Name") <> 0) 'And
+                'InStr(strSCtemp, "->GetAI") <> 0 And
+                'InStr(strSCtemp, "->RegisterSelf") <> 0 And
+                'CountStringExistsNumber(strSCtemp, "->") = 3)
                 If Not oktoprocess Then
-                    ReportTable.Rows.Add(f, "manual", "file has one more script type inside")
+
+                    ReportTable.Rows.Add(f, "manual", "file has no script name")
                     Exit Sub
                 Else
+                    'get function lists this is for prepare purpose
+                    'GetFunctions(strSCtemp) ' get function name between eg: ->pGossipHello =  &
+
+                    'get script count
+                    Dim intScCount As Integer = CountStringExistsNumber(strSCtemp, "->Name")
+                    If Not intScCount = 1 Then
+                        ReportTable.Rows.Add(f, "complex", "file has multiple more script name")
+                        Exit Sub
+                    End If
+
+                    'get function names for replacement purpose
+                    Dim dictOldFunctionAskeyOldFunctionNameAsValue As Dictionary(Of String, String) = New Dictionary(Of String, String)
+                    dictOldFunctionAskeyOldFunctionNameAsValue = GetFunctionsNames(strSCtemp)
+
+
                     '///we need to get the module name from ->Name
                     Dim scnametemp As String = Mid(strSCtemp, InStr(strSCtemp, "->Name"))
                     scnametemp = Microsoft.VisualBasic.Left(scnametemp, InStr(scnametemp, ";")) 'now we have ->Name = "script_name";
@@ -106,6 +135,22 @@ Public Class Form1
                         'get first } after find CreatureAI, actually SCStartPosition is the end
                         '/// so we have the second part
                         Dim strSecond As String = Mid(FileContent, structPos, SCStartPosition - structPos)
+
+                        'replace old function with new
+                        If dictOldFunctionAskeyOldFunctionNameAsValue.Count > 0 Then
+                            For Each subKey In dictOldFunctionAskeyOldFunctionNameAsValue
+                                'make sure we have the mapping in that table otherwise stop and ignore
+                                If subKey.Key <> "GetAI" Then
+                                    If DictFunctionMapping.ContainsKey(subKey.Key) Then
+                                        strSecond = strSecond.Replace(subKey.Value & "(", DictFunctionMapping(subKey.Key) & "(")
+                                    Else
+                                        ReportTable.Rows.Add(f, "fail", "function " & subKey.Value & " has no mapping in mapping table")
+                                        Exit Sub
+                                    End If
+                                End If
+
+                            Next
+                        End If
 
                         TextBox1.Text = strFirst
                         TextBox2.Text = strSecond
@@ -154,7 +199,12 @@ Public Class Form1
         End Sub
 
 
-        Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-            exportDT_to_File(ReportTable)
-        End Sub
-    End Class
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        exportDT_to_File(ReportTable)
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        exportDict_to_File(ScriptFunctionLists)
+    End Sub
+End Class
