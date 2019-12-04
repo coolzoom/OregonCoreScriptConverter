@@ -52,10 +52,10 @@ Module Module1
         Dim strTemp As String = ""
 
         'and we need it to be included in a new class
-        strTemp &= "class " & scriptname & " : public CreatureScript" & vbCrLf
+        strTemp &= "class " & scriptname & " : public InstanceMapScript" & vbCrLf
         strTemp &= "{" & vbCrLf
         strTemp &= "public: " & vbCrLf
-        strTemp &= "    " & scriptname & "() : CreatureScript(""" & scriptname & """) { }" & vbCrLf
+        strTemp &= "    " & scriptname & "() : InstanceMapScript(""" & scriptname & """) { }" & vbCrLf
 
         Dim arr
         arr = Split(strStructure, vbCrLf)

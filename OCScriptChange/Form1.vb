@@ -7,7 +7,7 @@ Imports System.IO
 Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GetDirectoryPath()
+        'GetDirectoryPath()
         If Not Directory.Exists(RootDirectory) Then
             Exit Sub
         End If
@@ -66,7 +66,7 @@ Public Class Form1
 
                 '///now make sure our sc module only has ->Name, ->GetAI, ->RegisterSelf
                 Dim oktoprocess As Boolean = (InStr(strSCtemp, "->Name") <> 0 And
-                                             InStr(strSCtemp, "->GetAI") <> 0 And
+                                             InStr(strSCtemp, "->GetInstanceData") <> 0 And
                                              InStr(strSCtemp, "->RegisterSelf") <> 0 And
                                              CountStringExistsNumber(strSCtemp, "->") = 3)
                 If Not oktoprocess Then
@@ -92,7 +92,7 @@ Public Class Form1
 
                     'now we should get the position of struct script_nameAI 
                     'get struct script_nameAI position
-                    Dim structStr As String = "struct " & scnametemp & "AI"
+                    Dim structStr As String = "struct " & scnametemp
                     Dim structPos As Integer = InStr(FileContent, structStr)
 
 
@@ -106,7 +106,7 @@ Public Class Form1
                         'get first } after find CreatureAI, actually SCStartPosition is the end
                         '/// so we have the second part
                         Dim strSecond As String = Mid(FileContent, structPos, SCStartPosition - structPos)
-
+                        strSecond = strSecond.Replace(scnametemp, scnametemp & "AI")
                         TextBox1.Text = strFirst
                         TextBox2.Text = strSecond
                         TextBox3.Text = scNew
