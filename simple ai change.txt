@@ -34,6 +34,30 @@
 
     
 	};
+
+class script_name : public InstanceMapScript
+{
+public:
+    script_name() : InstanceMapScript("script_name") { }
+
+
+};
+
+class script_name : public GameObjectScript
+{
+public:
+    script_name() : GameObjectScript("script_name") { }
+
+
+};
+
+class script_name : public AreaTriggerScript
+{
+public:
+    script_name() : AreaTriggerScript("script_name") { }
+
+
+};
 	
 5, replace original content inside void AddSC* to new
 

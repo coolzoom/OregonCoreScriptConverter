@@ -37,6 +37,7 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button4 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -149,11 +150,22 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button3, "export temp functions for analysis purpose")
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(240, 448)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(175, 60)
+        Me.Button4.TabIndex = 12
+        Me.Button4.Text = "Test"
+        Me.ToolTip1.SetToolTip(Me.Button4, "export temp functions for analysis purpose")
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1141, 523)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -188,4 +200,5 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class
