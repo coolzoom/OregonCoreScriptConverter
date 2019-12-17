@@ -18,7 +18,7 @@ Module Module1
     {"pGOHello", "OnGossipHello"},
     {"pChooseReward", "OnQuestReward"},
     {"GetInstanceData", "OnGetInstanceData"},
-    {"pItemUse", "OnItemUse"},
+    {"pItemUse", "OnUse"},
     {"pEffectDummyCreature", "OnDummyEffect"},
     {"pQuestComplete", "OnQuestComplete"},
     {"pGOQuestAccept", "OnQuestAccept"},
