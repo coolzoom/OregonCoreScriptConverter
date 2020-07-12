@@ -7,7 +7,7 @@ Imports System.IO
 Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        OCScriptFolder = "H:\WOWServer\Source\OregonCore\src\scripts"
+        OCScriptFolder = "F:\WOWServer\Source\mangos-tbc\src\game\AI"
         'GetDirectoryPath()
         If Not Directory.Exists(OCScriptFolder) Then
             Exit Sub
