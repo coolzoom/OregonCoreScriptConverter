@@ -7,17 +7,21 @@ Imports System.IO
 
 Class Program
 	Friend Shared Sub Main(args As String())
+		Dim path As String = ""
 		If args.Length <> 1 Then
-			Console.WriteLine("Usage: ScriptsConverter.exe [path_to_dir|path_to_file]")
+			Console.WriteLine("Usage: ScriptsConverter.exe [path_to_dir|path_to_file], now using default path")
+			path = "F:\WOWServer\Source\mangos-tbc\src\game\AI"
 		Else
-			Dim path As String = args(0)
-			If File.Exists(path) Then
-				ProcessFile(path)
-			ElseIf Directory.Exists(path) Then
-				ProcessDirectory(path)
-			Else
-				Console.WriteLine("Invalid file or directory specified." & vbCr & vbLf & vbCr & vbLf & "Usage: ScriptsConverter.exe [path_to_dir|path_to_file]")
-			End If
+			path = args(0)
+
+		End If
+
+		If File.Exists(path) Then
+			ProcessFile(path)
+		ElseIf Directory.Exists(path) Then
+			ProcessDirectory(path)
+		Else
+			Console.WriteLine("Invalid file or directory specified." & vbCr & vbLf & vbCr & vbLf & "Usage: ScriptsConverter.exe [path_to_dir|path_to_file]")
 		End If
 	End Sub
 
@@ -76,7 +80,7 @@ Class Program
 		Dim m As Match = r.Match(txt)
 		If m.Success Then
 			Dim pos As Integer = m.Index
-			While System.Math.Max(System.Threading.Interlocked.Decrement(pos),pos + 1) >= 0 AndAlso pos < txt.Length
+			While System.Math.Max(System.Threading.Interlocked.Decrement(pos), pos + 1) >= 0 AndAlso pos < txt.Length
 				If txt(pos) = ControlChars.Lf Then
 					Exit While
 				End If
@@ -85,7 +89,7 @@ Class Program
 			Dim lastPos As Integer = txt.IndexOf(vbLf & "}", pos)
 			If lastPos <> -1 Then
 				lastPos += 2
-				While System.Math.Max(System.Threading.Interlocked.Increment(lastPos),lastPos - 1) >= 0 AndAlso lastPos < txt.Length
+				While System.Math.Max(System.Threading.Interlocked.Increment(lastPos), lastPos - 1) >= 0 AndAlso lastPos < txt.Length
 					If txt(lastPos) = ControlChars.Lf Then
 						Exit While
 					End If
@@ -111,9 +115,7 @@ Class Program
 		Dim data As ScriptData = Nothing
 		Dim scriptStart As Boolean = False
 		For Each line As String In lines
-            If line.IndexOf("Script*") <> -1 Then
-                Exit For
-            End If
+
 			If line.IndexOf("->RegisterSelf();") <> -1 Then
 				scriptStart = True
 				data = New ScriptData()
@@ -126,16 +128,20 @@ Class Program
 					data = Nothing
 					Continue For
 				End If
-                Dim r As New Regex("pNewScript->([a-zA-Z]+) *= *&?([""_a-zA-Z0-9]+);")
+				Dim r As New Regex("pNewScript->([a-zA-Z]+) *= *&?([""_a-zA-Z0-9]+);")
 				Dim m As Match = r.Match(line)
 				If m.Success Then
 					If m.Groups(1).Value.Equals("Name") Then
-						data.name = m.Groups(2).Value.Trim(New Char() {""""C})
+						data.name = m.Groups(2).Value.Trim(New Char() {""""c})
 					Else
 						data.AddMethod(m.Groups(2).Value)
 					End If
 				End If
 				Continue For
+			End If
+
+			If line.IndexOf("Script*") <> -1 Then
+				Exit For
 			End If
 		Next
 		If scripts.Count <> 0 Then
@@ -164,7 +170,7 @@ Class Program
 							If endPos <> -1 Then
 								endPos += 2
 							End If
-							While System.Math.Max(System.Threading.Interlocked.Increment(endPos),endPos - 1) >= 0 AndAlso endPos < txt.Length
+							While System.Math.Max(System.Threading.Interlocked.Increment(endPos), endPos - 1) >= 0 AndAlso endPos < txt.Length
 								If txt(endPos) = ControlChars.Lf Then
 									Exit While
 								End If
