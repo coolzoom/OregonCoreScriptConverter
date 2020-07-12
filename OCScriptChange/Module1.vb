@@ -7,23 +7,47 @@ Module Module1
     Public ReportTable As System.Data.DataTable
     Public ScriptFunctionLists As Dictionary(Of String, String)
 
+    '    Script() 
+    '    pGossipHello(nullptr), pGossipHelloGO(nullptr), pGossipSelect(nullptr), pGossipSelectGO(nullptr),
+    '    pGossipSelectWithCode(nullptr), pGossipSelectGOWithCode(nullptr),
+    '    pDialogStatusNPC(nullptr), pDialogStatusGO(nullptr),
+    '    pQuestAcceptNPC(nullptr), pQuestAcceptGO(nullptr), pQuestAcceptItem(nullptr),
+    '    pQuestRewardedNPC(nullptr), pQuestRewardedGO(nullptr),
+    '    pGOUse(nullptr), pItemUse(nullptr), pItemLoot(nullptr), pAreaTrigger(nullptr), pProcessEventId(nullptr),
+    '    pEffectDummyNPC(nullptr), pEffectDummyGO(nullptr), pEffectDummyItem(nullptr), pEffectScriptEffectNPC(nullptr),
+    '    pEffectAuraDummy(nullptr), pTrapSearching(nullptr), GetGameObjectAI(nullptr), GetAI(nullptr), GetInstanceData(nullptr)
+    '{}
     Public DictFunctionMapping As Dictionary(Of String, String) = New Dictionary(Of String, String) _
         From {
     {"pGossipHello", "OnGossipHello"},
+    {"pGossipHelloGO", "OnGossipHello"},
     {"pGossipSelect", "OnGossipSelect"},
+    {"pGossipSelectGO", "OnGossipSelect"},
     {"pGossipSelectWithCode", "OnGossipSelectCode"},
-    {"pQuestAccept", "OnQuestAccept"},
-    {"GoQuestComplete", "OnQuestComplete"},
-    {"pAreaTrigger", "OnTrigger"},
-    {"pGOHello", "OnGossipHello"},
-    {"pChooseReward", "OnQuestReward"},
-    {"GetInstanceData", "OnGetInstanceData"},
-    {"pItemUse", "OnUse"},
-    {"pEffectDummyCreature", "OnDummyEffect"},
-    {"pQuestComplete", "OnQuestComplete"},
-    {"pGOQuestAccept", "OnQuestAccept"},
-    {"pGOSelect", "OnGossipSelect"}
+    {"pGossipSelectGOWithCode", "OnGossipSelectCode"},
+    {"pDialogStatusNPC", "GetDialogStatus"},
+    {"pDialogStatusGO", "GetDialogStatus"},
+    {"pQuestAcceptNPC", "OnQuestAccept"},
+    {"pQuestAcceptGO", "OnQuestAccept"},
+    {"pQuestAcceptItem", "OnQuestAccept"},
+    {"pQuestRewardedNPC", "OnQuestRewarded"},
+    {"pQuestRewardedGO", "OnQuestRewarded"},
+    {"pGOUse", "OnGameObjectUse"},
+    {"pItemUse", "OnItemUse"},
+    {"pItemLoot", "OnItemLoot"},
+    {"pAreaTrigger", "OnAreaTrigger"},
+    {"pProcessEventId", "OnProcessEvent"},
+    {"pEffectDummyNPC", "OnEffectDummy"},
+    {"pEffectDummyGO", "OnEffectDummy"},
+    {"pEffectDummyItem", "OnEffectDummy"},
+    {"pEffectScriptEffectNPC", "OnEffectScriptEffect"},
+    {"pEffectAuraDummy", "OnAuraDummy"},
+    {"pTrapSearching", "OnTrapSearch"}
     }
+    '    {"GetGameObjectAI", "GameObjectAI* GetGameObjectAI"},
+    '{"GetAI", "UnitAI* GetAI"},
+
+
 
     Public Function GetFunctions(ByVal strAddSC As String)
         ''///REGEX METHOD
@@ -311,7 +335,7 @@ Module Module1
         Dim dictTemp As Dictionary(Of String, String) = New Dictionary(Of String, String)
         For Each subKey In dictOrg
             If subKey.Key <> "" Then
-                Dim strStart As String = "CreatureAI* GetAI_" & subKey.Key & "("
+                Dim strStart As String = "UnitAI* GetAI_" & subKey.Key & "("
                 Dim strEnd As String = "}"
                 If InStr(fileContent, strStart) <> 0 Then
                     Dim strTemp As String = Mid(fileContent, InStr(fileContent, strStart))

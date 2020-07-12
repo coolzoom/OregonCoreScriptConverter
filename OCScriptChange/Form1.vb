@@ -48,12 +48,17 @@ Public Class Form1
     Private Sub ProcessingSimpleBossScript(ByVal f As String)
         Dim strSCKey As String = "void AddSC"
 
+        'dont do spell and aura
+        Dim SpellRegKey As String = "RegisterSpellScript"
+        Dim AuraRegKey As String = "RegisterAuraScript"
+
+
         Dim sr As StreamReader = New StreamReader(f, System.Text.Encoding.UTF8)
         Dim FileContent As String = sr.ReadToEnd
         sr.Close()
         sr = Nothing
         '///first we make sure we only do the one which has only one void AddSC, at least for now
-        Dim SCCount As Integer = CountStringExistsNumber(FileContent, strSCKey)
+        Dim SCCount As Integer = CountStringExistsNumber(FileContent, strSCKey) + CountStringExistsNumber(FileContent, SpellRegKey) + CountStringExistsNumber(FileContent, AuraRegKey)
 
         Select Case SCCount
             Case 0
