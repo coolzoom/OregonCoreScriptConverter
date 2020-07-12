@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ScriptConverter">
+</Property><Property Name="解决方案文件" Value="C:\Users\Administrator\Desktop\ScriptsConverter\ScriptConverter.sln">
+</Property><Property Name="Date" Value="2020年7月12日">
+</Property><Property Name="Time" Value="10:15">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ScriptConverter.sln" Description="文件已成功备份为 C:\Users\Administrator\Desktop\ScriptsConverter\Backup\ScriptConverter.sln">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\ScriptConverter.csproj" Description="项目文件已成功备份为 C:\Users\Administrator\Desktop\ScriptsConverter\Backup\ScriptConverter\ScriptConverter.csproj">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\ScriptConverter.csproj.user" Description="项目用户文件成功备份为 C:\Users\Administrator\Desktop\ScriptsConverter\Backup\ScriptConverter\ScriptConverter.csproj.user">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\Program.cs" Description="文件已成功备份为 C:\Users\Administrator\Desktop\ScriptsConverter\Backup\ScriptConverter\Program.cs">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\Properties\AssemblyInfo.cs" Description="文件已成功备份为 C:\Users\Administrator\Desktop\ScriptsConverter\Backup\ScriptConverter\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\ScriptConverter.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="ScriptConverter" Source="ScriptConverter\ScriptConverter.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ScriptConverter.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="ScriptConverter.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ScriptConverter" Source="ScriptConverter\ScriptConverter.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>
