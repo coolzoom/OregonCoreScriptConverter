@@ -43,35 +43,35 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(467, 449)
+        Me.Button1.Location = New System.Drawing.Point(467, 421)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(175, 60)
+        Me.Button1.Size = New System.Drawing.Size(175, 56)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Select Folder"
+        Me.Button1.Text = "Start"
         Me.ToolTip1.SetToolTip(Me.Button1, "Select folder and parse")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 32)
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 30)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(378, 410)
+        Me.DataGridView1.Size = New System.Drawing.Size(378, 384)
         Me.DataGridView1.TabIndex = 1
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 486)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 456)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(100, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(100, 22)
         Me.ProgressBar1.TabIndex = 2
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(648, 449)
+        Me.Button2.Location = New System.Drawing.Point(648, 421)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(175, 60)
+        Me.Button2.Size = New System.Drawing.Size(175, 56)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "Export Report"
         Me.ToolTip1.SetToolTip(Me.Button2, "Export parese report")
@@ -79,72 +79,72 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(387, 32)
+        Me.TextBox1.Location = New System.Drawing.Point(387, 30)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(238, 410)
+        Me.TextBox1.Size = New System.Drawing.Size(238, 385)
         Me.TextBox1.TabIndex = 4
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(631, 32)
+        Me.TextBox2.Location = New System.Drawing.Point(631, 30)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(238, 410)
+        Me.TextBox2.Size = New System.Drawing.Size(238, 385)
         Me.TextBox2.TabIndex = 5
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(875, 33)
+        Me.TextBox3.Location = New System.Drawing.Point(875, 31)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox3.Size = New System.Drawing.Size(238, 410)
+        Me.TextBox3.Size = New System.Drawing.Size(238, 385)
         Me.TextBox3.TabIndex = 6
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 12)
+        Me.Label1.Location = New System.Drawing.Point(9, 11)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 17)
+        Me.Label1.Size = New System.Drawing.Size(55, 15)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Report"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(384, 12)
+        Me.Label2.Location = New System.Drawing.Point(384, 11)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(121, 17)
+        Me.Label2.Size = New System.Drawing.Size(159, 15)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "First Part(defines)"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(631, 12)
+        Me.Label3.Location = New System.Drawing.Point(631, 11)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(152, 17)
+        Me.Label3.Size = New System.Drawing.Size(183, 15)
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Second Part(structure)"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(875, 13)
+        Me.Label4.Location = New System.Drawing.Point(875, 12)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(154, 17)
+        Me.Label4.Size = New System.Drawing.Size(183, 15)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Third Part(void AddSC)"
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(829, 449)
+        Me.Button3.Location = New System.Drawing.Point(829, 421)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(175, 60)
+        Me.Button3.Size = New System.Drawing.Size(175, 56)
         Me.Button3.TabIndex = 11
         Me.Button3.Text = "Export Functions"
         Me.ToolTip1.SetToolTip(Me.Button3, "export temp functions for analysis purpose")
@@ -152,9 +152,9 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(240, 448)
+        Me.Button4.Location = New System.Drawing.Point(240, 420)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(175, 60)
+        Me.Button4.Size = New System.Drawing.Size(175, 56)
         Me.Button4.TabIndex = 12
         Me.Button4.Text = "Test"
         Me.ToolTip1.SetToolTip(Me.Button4, "export temp functions for analysis purpose")
@@ -162,9 +162,9 @@ Partial Class Form1
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1141, 523)
+        Me.ClientSize = New System.Drawing.Size(1141, 490)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label4)

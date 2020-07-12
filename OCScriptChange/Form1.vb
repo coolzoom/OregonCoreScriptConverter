@@ -30,27 +30,31 @@ Public Class Form1
         ReportTable.Columns.Add("Result")
         ReportTable.Columns.Add("Reason")
         'loop all files
+        Dim i As Integer = 1
         For Each cppFile In dictFileLists
+            ProgressBar1.Value = 100 * i / dictFileLists.Count
+            Windows.Forms.Application.DoEvents()
             Dim f As String = cppFile.Key
             If File.Exists(f) Then
                 '
-
-
-
                 ProcessingSimpleBossScript(f)
 
             End If
+            i += 1
         Next
         'indicate report
         DataGridView1.DataSource = ReportTable
+
+        MsgBox("Done")
     End Sub
 
     Private Sub ProcessingSimpleBossScript(ByVal f As String)
         Dim strSCKey As String = "void AddSC"
 
-        'dont do spell and aura
+        'dont do spell and aura and instance for now
         Dim SpellRegKey As String = "RegisterSpellScript"
         Dim AuraRegKey As String = "RegisterAuraScript"
+        Dim InstanceRegKey As String = "GetInstanceData"
 
 
         Dim sr As StreamReader = New StreamReader(f, System.Text.Encoding.UTF8)
@@ -58,7 +62,10 @@ Public Class Form1
         sr.Close()
         sr = Nothing
         '///first we make sure we only do the one which has only one void AddSC, at least for now
-        Dim SCCount As Integer = CountStringExistsNumber(FileContent, strSCKey) + CountStringExistsNumber(FileContent, SpellRegKey) + CountStringExistsNumber(FileContent, AuraRegKey)
+        Dim SCCount As Integer = CountStringExistsNumber(FileContent, strSCKey) +
+            CountStringExistsNumber(FileContent, SpellRegKey) +
+            CountStringExistsNumber(FileContent, AuraRegKey) +
+            CountStringExistsNumber(FileContent, InstanceRegKey)
 
         Select Case SCCount
             Case 0
