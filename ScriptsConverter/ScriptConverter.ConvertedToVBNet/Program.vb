@@ -121,7 +121,7 @@ Class Program
                 End If
             End While
             'pos++;从此处循环找下一个}位置即为函数结束
-            Dim lastPos As Integer = txtContent.IndexOf(vbLf & "}", pos)
+            Dim lastPos As Integer = txtContent.IndexOf(vbLf & "}", pos) 'TODO 这里是否应该是};
             If lastPos <> -1 Then
                 lastPos += 2
                 While System.Math.Max(System.Threading.Interlocked.Increment(lastPos), lastPos - 1) >= 0 AndAlso lastPos < txtContent.Length
@@ -233,7 +233,7 @@ Class Program
                         While r.IsMatch(cppContent)
                             Dim m As Match = r.Match(cppContent)
                             Dim startPos As Integer = m.Index
-                            Dim endPos As Integer = cppContent.IndexOf(vbLf & "}", startPos)
+                            Dim endPos As Integer = cppContent.IndexOf(vbLf & "}", startPos) 'TODO 这里是否应该是};
                             If endPos <> -1 Then
                                 endPos += 2
                             End If
