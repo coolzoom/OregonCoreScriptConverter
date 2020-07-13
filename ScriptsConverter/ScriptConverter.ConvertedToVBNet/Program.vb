@@ -78,8 +78,14 @@ Class Program
                     'get the ainame
                     Dim name As String = aifunc.Substring(pos + s.Length)
                     If i = 1 Then
+                        'debug
+                        If name.Contains("npc_spirit_guide") Then
+                            MsgBox("")
+                        End If
                         'TODO, some AI dont have AI behind, so may not able to get the struct data
                         aiName = name & "AI"
+                        '一些已经包含AI则不再添加AI
+                        aiName = aiName.Replace("AIAI", "AI")
                     End If
                     If i = 2 OrElse i = 3 Then
                         instanceName = name
@@ -175,7 +181,16 @@ Class Program
                     Continue For
                 End If
                 '从当前行pNewScript->后面判断方法和过程
+                '一些过程非标准过程，需要转换成标准AI 例如' pNewScript->GetAI = &GetNewAIInstance<npc_spirit_guideAI>;
+                If line.Contains("GetNewAIInstance<") And line.Contains("GetAI") Then
+                    line = line.Replace("GetNewAIInstance<", "GetAI_")
+                    line = line.Replace(">;", ";")
+                End If
+                '标准AI应该如下
+                'pNewScript->GetAI = &GetAI_npc_professor_phizzlethorpe;
                 Dim r As New Regex("pNewScript->([a-zA-Z]+) *= *&?([""_a-zA-Z0-9]+);")
+
+
                 Dim m As Match = r.Match(line)
                 If m.Success Then
 
