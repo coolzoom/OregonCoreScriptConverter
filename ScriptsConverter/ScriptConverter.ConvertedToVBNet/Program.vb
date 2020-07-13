@@ -240,6 +240,27 @@ Class Program
         Dim cppContent As String = File.ReadAllText(filePath)
         Dim lines As String() = File.ReadAllLines(filePath)
         Array.Reverse(lines)
+
+        'adding class define for AI's boss_illidan_stormrageAI should be boss_illidan_stormrage::boss_illidan_stormrageAI
+        Dim tempContent As String = ""
+        For Each line As String In lines
+            'if (boss_illidan_stormrageAI* illidanAI = dynamic_cast<boss_illidan_stormrageAI*>(illidan->AI()))
+            If line.Contains("AI*>") And line.Contains("dynamic_cast<") And line.Contains("=") And line.Contains("->AI()") And Not line.Contains("::") Then
+                tempContent = ""
+                Dim intstartpos As Integer = line.IndexOf("dynamic_cast<") + Len("dynamic_cast<")
+                Dim intendpos As Integer = line.IndexOf("AI*>")
+                Dim strname As String = line.Substring(intstartpos, intendpos - intstartpos)
+
+                tempContent = line.Replace(strname & "AI*", strname & "::" & strname & "AI*")
+                cppContent = cppContent.Replace(line, tempContent)
+            End If
+
+
+        Next
+
+        File.WriteAllText(filePath, cppContent)
+
+
         '该cpp包含的脚本列表
         Dim scripts As New ArrayList()
         '单个脚本所有相关信息暂存
