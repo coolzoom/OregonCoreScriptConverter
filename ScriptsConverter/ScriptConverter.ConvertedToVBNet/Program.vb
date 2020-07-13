@@ -215,9 +215,9 @@ Class Program
                 '如果有则在最后加override
                 If hasfunc Then
                     If subl.Contains("GetInstanceScript") Then
-                        restemp += subl + " override" + vbLf
-                    Else
                         restemp += subl + " const override" + vbLf
+                    Else
+                        restemp += subl + " override" + vbLf
                     End If
 
                 Else
