@@ -300,12 +300,19 @@ Class Program
                     register = "    new " & scInfo.targetname & "();" & vbLf & register
                 End If
             Next
+            '获取RegisterSpellScript<与RegisterAuraScript<
+            Dim strOther As String = ""
+            For Each strl As String In lines
+                If strl.Contains("RegisterSpellScript<") Or strl.Contains("与RegisterAuraScript<") Then
+                    strOther &= strl & vbLf
+                End If
+            Next
             '获取AddSC段信息
             Dim r2 As New Regex("void +AddSC_([_a-zA-Z0-9]+)")
             Dim m2 As Match = r2.Match(cppContent)
             If m2.Success Then
                 cppContent = cppContent.Remove(m2.Index)
-                cppContent += "void AddSC_" & m2.Groups(1).Value & "()" & vbLf & "{" & vbLf & register & "}" & vbLf
+                cppContent += "void AddSC_" & m2.Groups(1).Value & "()" & vbLf & "{" & vbLf & register & vbLf & strOther & "}" & vbLf
             End If
             ' File.Copy(filePath, filePath + ".bkp");
             cppContent = cppContent.Replace(vbCr & vbLf, vbLf)
