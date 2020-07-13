@@ -19,19 +19,20 @@ Class Program
     {"pQuestAcceptNPC", "OnQuestAccept"},
     {"pQuestAcceptGO", "OnQuestAccept"},
     {"pQuestAcceptItem", "OnQuestAccept"},
-    {"pQuestRewardedNPC", "OnQuestRewarded"},
-    {"pQuestRewardedGO", "OnQuestRewarded"},
+    {"pQuestRewardedNPC", "OnQuestReward"},
+    {"pQuestRewardedGO", "OnQuestReward"},
     {"pGOUse", "OnGameObjectUse"},
     {"pItemUse", "OnItemUse"},
     {"pItemLoot", "OnItemLoot"},
-    {"pAreaTrigger", "OnAreaTrigger"},
+    {"pAreaTrigger", "OnTrigger"},
     {"pProcessEventId", "OnProcessEvent"},
     {"pEffectDummyNPC", "OnEffectDummy"},
     {"pEffectDummyGO", "OnEffectDummy"},
     {"pEffectDummyItem", "OnEffectDummy"},
     {"pEffectScriptEffectNPC", "OnEffectScriptEffect"},
     {"pEffectAuraDummy", "OnAuraDummy"},
-    {"pTrapSearching", "OnTrapSearch"}
+    {"pTrapSearching", "OnTrapSearch"},
+    {"GetInstanceData", "GetInstanceScript"}
     }
     Friend Shared Sub Main(args As String())
         Dim path As String = ""
@@ -188,21 +189,43 @@ Class Program
                 minPos = pos
             End If
 
-            '更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;并增加override
+            '更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;
             For Each skeypair As KeyValuePair(Of String, String) In aifuncmapping
                 If res.Contains(skeypair.Key) Then
                     If DictFunctionMapping.ContainsKey(skeypair.Value) Then
                         res = res.Replace(skeypair.Key, DictFunctionMapping(skeypair.Value))
-                        res = res.Replace(")" & vbCr, ") override" & vbCr)
-                        res = res.Replace(")" & vbLf, ") override" & vbLf)
-                        res = res.Replace(")" & vbCrLf, ") override" & vbCrLf)
                     End If
-
                 End If
             Next
+
+            '增加override
+            res = res.Replace(vbCrLf, vbLf)
+            res = res.Replace(vbCr, vbLf)
+            res = res.Replace(vbCr & vbLf, vbLf)
+            Dim restemp As String = ""
+            '循环每一行
+            For Each subl As String In Split(res, vbLf)
+                '是否有hook函数
+                Dim hasfunc As Boolean = False
+                For Each subv As String In DictFunctionMapping.Values
+                    If subl.Contains(subv) Then
+                        hasfunc = True
+                    End If
+                Next
+                '如果有则在最后加override
+                If hasfunc Then
+                    If subl.Contains("GetInstanceScript") Then
+                        restemp += subl + " override" + vbLf
+                    Else
+                        restemp += subl + " const override" + vbLf
+                    End If
+
+                Else
+                    restemp += subl + vbLf
+                End If
+            Next
+            res = restemp
         End If
-
-
 
         Return res
     End Function
@@ -360,6 +383,8 @@ Class Program
                                 typeName = "CreatureScript"
                             ElseIf scInfo.targetname.IndexOf("boss_") = 0 Then
                                 typeName = "CreatureScript"
+                            ElseIf scInfo.targetname.IndexOf("guard_") = 0 Then
+                                typeName = "CreatureScript"
                             ElseIf scInfo.targetname.IndexOf("item_") = 0 Then
                                 typeName = "ItemScript"
                             ElseIf scInfo.targetname.IndexOf("go_") = 0 Then
@@ -372,7 +397,7 @@ Class Program
                             Exit Select
                     End Select
                     If scInfo.instanceName IsNot Nothing Then
-                        scsring = scsring.Replace(scInfo.instanceName, scInfo.instanceName & "_InstanceMapScript")
+                        'scsring = scsring.Replace(scInfo.instanceName, scInfo.instanceName & "_InstanceMapScript")
                     End If
                     scsring = scsring.Replace(vbLf, vbLf & "    ")
                     scsring = "class " & scInfo.targetname & " : public " & typeName & vbLf & "{" & vbLf & "public:" & vbLf & "    " & scInfo.targetname & "() : " & typeName & "(""" & scInfo.targetname & """) { }" & vbLf & scsring & vbLf & "};"
