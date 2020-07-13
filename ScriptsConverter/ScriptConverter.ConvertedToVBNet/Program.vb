@@ -307,7 +307,7 @@ Class Program
                     '找structure函数
                     Dim ai As String = GetFunction("struct " & scInfo.aiName, cppContent, minPos)
                     If ai = "" Then
-                        strErrorMsg += String.Format("Error GetFunction {0}", "struct " & scInfo.instanceName) & vbLf
+                        strErrorMsg += String.Format("Error GetFunction {0}", "struct " & scInfo.aiName) & vbLf
                     End If
                     '如果找structure函数
                     If ai IsNot Nothing Then
