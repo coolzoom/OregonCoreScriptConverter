@@ -187,17 +187,22 @@ Class Program
             If pos < minPos Then
                 minPos = pos
             End If
+
+            '更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;并增加override
+            For Each skeypair As KeyValuePair(Of String, String) In aifuncmapping
+                If res.Contains(skeypair.Key) Then
+                    If DictFunctionMapping.ContainsKey(skeypair.Value) Then
+                        res = res.Replace(skeypair.Key, DictFunctionMapping(skeypair.Value))
+                        res = res.Replace(")" & vbCr, ") override" & vbCr)
+                        res = res.Replace(")" & vbLf, ") override" & vbLf)
+                        res = res.Replace(")" & vbCrLf, ") override" & vbCrLf)
+                    End If
+
+                End If
+            Next
         End If
 
-        '更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;并增加override
-        For Each skeypair As KeyValuePair(Of String, String) In aifuncmapping
-            If res.Contains(skeypair.Key) Then
-                res = res.Replace(skeypair.Key, DictFunctionMapping(skeypair.Value))
-                res = res.Replace(")" & vbCr, ") override" & vbCr)
-                res = res.Replace(")" & vbLf, ") override" & vbLf)
-                res = res.Replace(")" & vbCrLf, ") override" & vbCrLf)
-            End If
-        Next
+
 
         Return res
     End Function
@@ -268,7 +273,7 @@ Class Program
                 Exit For
             End If
         Next
-
+        Dim strErrorMsg As String = ""
         '如果函数名不为空
         If scripts.Count <> 0 Then
             Dim register As String = ""
@@ -283,18 +288,27 @@ Class Program
                 '循环每个过程名字表，并从文档中获取过程段
                 For Each aifunction As String In scInfo.aifunctions
                     Dim s As String = GetFunction(aifunction, cppContent, minPos)
+                    If s = "" Then
+                        strErrorMsg += String.Format("Error GetFunction {0}", aifunction) & vbLf
+                    End If
                     scsring += s & vbLf
                 Next
                 '如果是副本
                 If scInfo.instanceName IsNot Nothing Then
                     '找structure函数
                     Dim s As String = GetFunction("struct " & scInfo.instanceName, cppContent, minPos)
+                    If s = "" Then
+                        strErrorMsg += String.Format("Error GetFunction {0}", "struct " & scInfo.instanceName) & vbLf
+                    End If
                     scsring += s & vbLf
                 End If
                 '如果是生物ai
                 If scInfo.aiName IsNot Nothing Then
                     '找structure函数
                     Dim ai As String = GetFunction("struct " & scInfo.aiName, cppContent, minPos)
+                    If ai = "" Then
+                        strErrorMsg += String.Format("Error GetFunction {0}", "struct " & scInfo.instanceName) & vbLf
+                    End If
                     '如果找structure函数
                     If ai IsNot Nothing Then
                         Dim sm As String = Nothing
@@ -389,6 +403,11 @@ Class Program
             ' File.Copy(filePath, filePath + ".bkp");
             cppContent = cppContent.Replace(vbCr & vbLf, vbLf)
             File.WriteAllText(filePath, cppContent)
+
+            'error message
+            If strErrorMsg <> "" Then
+                File.WriteAllText(filePath & ".err", strErrorMsg)
+            End If
         End If
     End Sub
 End Class
