@@ -6,36 +6,78 @@ Imports System.Text.RegularExpressions
 Imports System.IO
 
 Class Program
-	Friend Shared Sub Main(args As String())
-		Dim path As String = ""
-		If args.Length <> 1 Then
-			Console.WriteLine("Usage: ScriptsConverter.exe [path_to_dir|path_to_file], now using default path")
-			path = "F:\WOWServer\Source\mangos-tbc\src\game\AI"
-		Else
-			path = args(0)
+    Public Shared DictFunctionMapping As Dictionary(Of String, String) = New Dictionary(Of String, String) _
+        From {
+    {"pGossipHello", "OnGossipHello"},
+    {"pGossipHelloGO", "OnGossipHello"},
+    {"pGossipSelect", "OnGossipSelect"},
+    {"pGossipSelectGO", "OnGossipSelect"},
+    {"pGossipSelectWithCode", "OnGossipSelectCode"},
+    {"pGossipSelectGOWithCode", "OnGossipSelectCode"},
+    {"pDialogStatusNPC", "GetDialogStatus"},
+    {"pDialogStatusGO", "GetDialogStatus"},
+    {"pQuestAcceptNPC", "OnQuestAccept"},
+    {"pQuestAcceptGO", "OnQuestAccept"},
+    {"pQuestAcceptItem", "OnQuestAccept"},
+    {"pQuestRewardedNPC", "OnQuestRewarded"},
+    {"pQuestRewardedGO", "OnQuestRewarded"},
+    {"pGOUse", "OnGameObjectUse"},
+    {"pItemUse", "OnItemUse"},
+    {"pItemLoot", "OnItemLoot"},
+    {"pAreaTrigger", "OnAreaTrigger"},
+    {"pProcessEventId", "OnProcessEvent"},
+    {"pEffectDummyNPC", "OnEffectDummy"},
+    {"pEffectDummyGO", "OnEffectDummy"},
+    {"pEffectDummyItem", "OnEffectDummy"},
+    {"pEffectScriptEffectNPC", "OnEffectScriptEffect"},
+    {"pEffectAuraDummy", "OnAuraDummy"},
+    {"pTrapSearching", "OnTrapSearch"}
+    }
+    Friend Shared Sub Main(args As String())
+        Dim path As String = ""
+        If args.Length <> 1 Then
+            Console.WriteLine("Usage: ScriptsConverter.exe [path_to_dir|path_to_file], now using default path")
+            path = "F:\WOWServer\Source\mangos-tbc\src\game\AI"
+        Else
+            path = args(0)
 
-		End If
+        End If
 
-		If File.Exists(path) Then
-			ProcessFile(path)
-		ElseIf Directory.Exists(path) Then
-			ProcessDirectory(path)
-		Else
-			Console.WriteLine("Invalid file or directory specified." & vbCr & vbLf & vbCr & vbLf & "Usage: ScriptsConverter.exe [path_to_dir|path_to_file]")
-		End If
-	End Sub
+        If File.Exists(path) Then
+            ProcessFile(path)
+        ElseIf Directory.Exists(path) Then
+            ProcessDirectory(path)
+        Else
+            Console.WriteLine("Invalid file or directory specified." & vbCr & vbLf & vbCr & vbLf & "Usage: ScriptsConverter.exe [path_to_dir|path_to_file]")
+        End If
+    End Sub
 
-	Private Shared Sub ProcessDirectory(path As String)
-		Dim files As String() = Directory.GetFiles(path, "*.cpp")
-		For Each file As String In files
-			ProcessFile(file)
-		Next
-		Dim dirs As String() = Directory.GetDirectories(path)
-		For Each dir As String In dirs
-			ProcessDirectory(dir)
-		Next
-	End Sub
+    Private Shared Sub ProcessDirectory(path As String)
+        Dim files As String() = Directory.GetFiles(path, "*.cpp")
+        For Each file As String In files
+            ProcessFile(file)
+        Next
+        Dim dirs As String() = Directory.GetDirectories(path)
+        For Each dir As String In dirs
+            ProcessDirectory(dir)
+        Next
+    End Sub
 
+    ''' <summary>
+    ''' 与脚本相关的函数functions匹配表，用于后续更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports;
+    ''' </summary>
+    Public Shared aifuncmapping As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' 与脚本相关的函数functions匹配表，用于后续更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;
+    ''' </summary>
+    ''' <param name="func">GossipSelect_npc_spawned_oronok_tornheart</param>
+    ''' <param name="funcname">pGossipHello</param>
+    Public Shared Sub AddFuncMapping(func As String, funcname As String)
+        If Not aifuncmapping.ContainsKey(func) Then
+            aifuncmapping.Add(func, funcname)
+        End If
+
+    End Sub
     Private Class ScriptData
         ''' <summary>
         ''' 脚本类型前缀script type  '0 "GetAI_", 1 "GetInstance_", 2 "GetInstanceData_"
@@ -61,6 +103,7 @@ Class Program
         ''' 脚本类型前缀数组 prefix for different ai
         ''' </summary>
         Public scAIprefix As String() = New String() {"GetAI_", "GetInstance_", "GetInstanceData_"}
+
         ''' <summary>
         ''' 从 "GetAI_", "GetInstance_", "GetInstanceData_" 等字符串中获取并组成脚本ai名，如 boss_xxxAI
         ''' </summary>
@@ -145,6 +188,17 @@ Class Program
                 minPos = pos
             End If
         End If
+
+        '更改函数名称 如pNewScript->pProcessEventId = &ProcessEventTransports; pNewScript->pGossipHello = &GossipHello_npc_spirit_guide;并增加override
+        For Each skeypair As KeyValuePair(Of String, String) In aifuncmapping
+            If res.Contains(skeypair.Key) Then
+                res = res.Replace(skeypair.Key, DictFunctionMapping(skeypair.Value))
+                res = res.Replace(")" & vbCr, ") override" & vbCr)
+                res = res.Replace(")" & vbLf, ") override" & vbLf)
+                res = res.Replace(")" & vbCrLf, ") override" & vbCrLf)
+            End If
+        Next
+
         Return res
     End Function
     ''' <summary>
@@ -204,6 +258,7 @@ Class Program
                         'pNewScript-> pGossipHello =  & GossipHello_npc_spawned_oronok_tornheart;
                         'pNewScript-> pGossipSelect = & GossipSelect_npc_spawned_oronok_tornheart;
                         data.AddFunction(m.Groups(2).Value)
+                        AddFuncMapping(m.Groups(2).Value, m.Groups(1).Value)
                     End If
                 End If
                 Continue For
@@ -307,7 +362,9 @@ Class Program
                     End If
                     scsring = scsring.Replace(vbLf, vbLf & "    ")
                     scsring = "class " & scInfo.targetname & " : public " & typeName & vbLf & "{" & vbLf & "public:" & vbLf & "    " & scInfo.targetname & "() : " & typeName & "(""" & scInfo.targetname & """) { }" & vbLf & scsring & vbLf & "};"
+
                     scsring = scsring.Replace("_" & scInfo.targetname, "") '删除过程中与ai相关的名字如将GossipHello_npc_spirit_guide改为GossipHello
+
                     scsring = scsring.Replace("AIAI", "AI")
                     scsring = scsring.Replace("    " & vbCr & vbLf, vbCr & vbLf)
                     scsring = scsring.Replace("    " & vbLf, vbLf)
@@ -318,7 +375,7 @@ Class Program
             '获取RegisterSpellScript<与RegisterAuraScript<
             Dim strOther As String = ""
             For Each strl As String In lines
-                If strl.Contains("RegisterSpellScript<") Or strl.Contains("与RegisterAuraScript<") Then
+                If strl.Contains("RegisterSpellScript<") Or strl.Contains("RegisterAuraScript<") Then
                     strOther &= strl & vbLf
                 End If
             Next
