@@ -36,209 +36,280 @@ Class Program
 		Next
 	End Sub
 
-	Private Class ScriptData
-		Public type As Integer = 0
-		Public name As String
-		Public methods As New ArrayList()
-		Public instanceName As String = Nothing
-		Public aiName As String = Nothing
-		Public special As String() = New String() {"GetAI_", "GetInstance_", "GetInstanceData_"}
+    Private Class ScriptData
+        ''' <summary>
+        ''' 脚本类型前缀script type  '0 "GetAI_", 1 "GetInstance_", 2 "GetInstanceData_"
+        ''' </summary>
+        Public type As Integer = 0
+        ''' <summary>
+        ''' 脚本名称前缀scriptname for this creature/go/item etc  mob_ npc_
+        ''' </summary>
+        Public targetname As String
+        ''' <summary>
+        ''' 与脚本相关的函数functions for this creature/go/item etc
+        ''' </summary>
+        Public aifunctions As New ArrayList()
+        ''' <summary>
+        ''' 副本名称instance name if it is instancemap
+        ''' </summary>
+        Public instanceName As String = Nothing
+        ''' <summary>
+        ''' GetAI里面的AI名称 ainame in the GetAI module
+        ''' </summary>
+        Public aiName As String = Nothing
+        ''' <summary>
+        ''' 脚本类型前缀数组 prefix for different ai
+        ''' </summary>
+        Public scAIprefix As String() = New String() {"GetAI_", "GetInstance_", "GetInstanceData_"}
+        ''' <summary>
+        ''' 从 "GetAI_", "GetInstance_", "GetInstanceData_" 等字符串中获取并组成脚本ai名，如 boss_xxxAI
+        ''' </summary>
+        ''' <param name="aifunc"></param>
+        Public Sub AddFunction(aifunc As String)
+            aifunctions.Add(aifunc)
+            Dim i As Integer = 0
+            For Each s As String In scAIprefix
+                i += 1
+                'check whether if the string include this aiprefix "GetAI_", "GetInstance_", "GetInstanceData_"
+                '检查字符串是否包含脚本类型前缀以判断是哪种脚本
+                Dim pos As Integer = aifunc.IndexOf(s)
+                If pos <> -1 Then
+                    type = i
+                    'get the ainame
+                    Dim name As String = aifunc.Substring(pos + s.Length)
+                    If i = 1 Then
+                        'TODO, some AI dont have AI behind, so may not able to get the struct data
+                        aiName = name & "AI"
+                    End If
+                    If i = 2 OrElse i = 3 Then
+                        instanceName = name
+                    End If
+                End If
+            Next
+        End Sub
+        ''' <summary>
+        ''' 打印该对象的所有函数方法
+        ''' </summary>
+        ''' <returns></returns>
+        Public Overrides Function ToString() As String
+            Dim sb As New StringBuilder()
+            sb.AppendFormat("Script: {0}" & vbLf, targetname)
+            For Each method As String In aifunctions
+                sb.Append("    ").Append(method).Append(vbLf)
+            Next
+            sb.Append(vbLf)
+            Return sb.ToString()
+        End Function
+    End Class
+    ''' <summary>
+    ''' 从字符段中获取满足函数名的函数过程
+    ''' </summary>
+    ''' <param name="method">函数名</param>
+    ''' <param name="txtContent">cpp文档内容或字符串</param>
+    ''' <param name="minPos">cpp文件长度，即最后一个位置</param>
+    ''' <returns></returns>
+    Private Shared Function GetFunction(method As String, ByRef txtContent As String, ByRef minPos As Integer) As String
+        Dim res As String = Nothing
+        Dim r As New Regex(method & "(\s|:|[(])") '匹配函数名后跟空格或者跟冒号或者跟括号的字段
+        Dim m As Match = r.Match(txtContent)
+        If m.Success Then
+            Dim pos As Integer = m.Index
+            'pos--,从此处找上一个回车换行即为函数开始
+            While System.Math.Max(System.Threading.Interlocked.Decrement(pos), pos + 1) >= 0 AndAlso pos < txtContent.Length
+                If txtContent(pos) = ControlChars.Lf Then
+                    Exit While
+                End If
+            End While
+            'pos++;从此处循环找下一个}位置即为函数结束
+            Dim lastPos As Integer = txtContent.IndexOf(vbLf & "}", pos)
+            If lastPos <> -1 Then
+                lastPos += 2
+                While System.Math.Max(System.Threading.Interlocked.Increment(lastPos), lastPos - 1) >= 0 AndAlso lastPos < txtContent.Length
+                    If txtContent(lastPos) = ControlChars.Lf Then
+                        Exit While
+                    End If
+                End While
+                '将该段内容暂存
+                res = txtContent.Substring(pos, lastPos - pos)
+                '移除已经解析的字符段
+                txtContent = txtContent.Remove(pos, lastPos - pos)
+            End If
+            '因字段已经截取，原位置应该减少
+            If pos < minPos Then
+                minPos = pos
+            End If
+        End If
+        Return res
+    End Function
+    ''' <summary>
+    ''' cpp文件处理
+    ''' </summary>
+    ''' <param name="filePath"></param>
+    Private Shared Sub ProcessFile(filePath As String)
 
-		Public Sub AddMethod(method As String)
-			methods.Add(method)
-			Dim i As Integer = 0
-			For Each s As String In special
-				i += 1
-				Dim pos As Integer = method.IndexOf(s)
-				If pos <> -1 Then
-					type = i
-					Dim name As String = method.Substring(pos + s.Length)
-					If i = 1 Then
-						aiName = name & "AI"
-					End If
-					If i = 2 OrElse i = 3 Then
-						instanceName = name
-					End If
-				End If
-			Next
-		End Sub
+        Console.WriteLine(filePath)
 
-		Public Overrides Function ToString() As String
-			Dim sb As New StringBuilder()
-			sb.AppendFormat("Script: {0}" & vbLf, name)
-			For Each method As String In methods
-				sb.Append("    ").Append(method).Append(vbLf)
-			Next
-			sb.Append(vbLf)
-			Return sb.ToString()
-		End Function
-	End Class
+        Dim cppContent As String = File.ReadAllText(filePath)
+        Dim lines As String() = File.ReadAllLines(filePath)
+        Array.Reverse(lines)
+        '该cpp包含的脚本列表
+        Dim scripts As New ArrayList()
+        '单个脚本所有相关信息暂存
+        Dim data As ScriptData = Nothing
+        '从AddSC里面获取脚本名和过程，此函数为暂时值判断是否为脚本开始
+        Dim scriptStart As Boolean = False
+        For Each line As String In lines
+            '因为是倒序，所以RegisterSelf时便是一个脚本的开始
+            If line.IndexOf("->RegisterSelf();") <> -1 Then
+                scriptStart = True
+                data = New ScriptData()
+                Continue For
+            End If
+            '如果当前处于解析脚本的过程
+            If scriptStart Then
+                '每个脚本最后一个为new Script则该段脚本已经解析完毕可以添加到脚本列表中
+                If line.IndexOf("= new Script") <> -1 Then
+                    scriptStart = False
+                    scripts.Add(data)
+                    data = Nothing
+                    Continue For
+                End If
+                '从当前行pNewScript->后面判断方法和过程
+                Dim r As New Regex("pNewScript->([a-zA-Z]+) *= *&?([""_a-zA-Z0-9]+);")
+                Dim m As Match = r.Match(line)
+                If m.Success Then
 
-	Private Shared Function GetMethod(method As String, ByRef txt As String, ByRef minPos As Integer) As String
-		Dim res As String = Nothing
-		Dim r As New Regex(method & "(\s|:|[(])")
-		Dim m As Match = r.Match(txt)
-		If m.Success Then
-			Dim pos As Integer = m.Index
-			While System.Math.Max(System.Threading.Interlocked.Decrement(pos), pos + 1) >= 0 AndAlso pos < txt.Length
-				If txt(pos) = ControlChars.Lf Then
-					Exit While
-				End If
-			End While
-			'pos++;
-			Dim lastPos As Integer = txt.IndexOf(vbLf & "}", pos)
-			If lastPos <> -1 Then
-				lastPos += 2
-				While System.Math.Max(System.Threading.Interlocked.Increment(lastPos), lastPos - 1) >= 0 AndAlso lastPos < txt.Length
-					If txt(lastPos) = ControlChars.Lf Then
-						Exit While
-					End If
-				End While
-				res = txt.Substring(pos, lastPos - pos)
-				txt = txt.Remove(pos, lastPos - pos)
-			End If
-			If pos < minPos Then
-				minPos = pos
-			End If
-		End If
-		Return res
-	End Function
+                    If m.Groups(1).Value.Equals("Name") Then
+                        '如果是pNewScript->Name则添加脚本名‘pNewScript-> Name = "npc_spawned_oronok_tornheart";
+                        data.targetname = m.Groups(2).Value.Trim(New Char() {""""c})
+                    Else
+                        '如果是其他名字则为其他相关函数，则赋值函数名，从 "GetAI_", "GetInstance_", "GetInstanceData_" 等字符串中获取并组成脚本ai名，如 boss_xxxAI
+                        '如果不在这个表里则不添加
+                        'pNewScript-> GetAI = & GetAI_npc_spawned_oronok_tornheart;
+                        'pNewScript-> pGossipHello =  & GossipHello_npc_spawned_oronok_tornheart;
+                        'pNewScript-> pGossipSelect = & GossipSelect_npc_spawned_oronok_tornheart;
+                        data.AddFunction(m.Groups(2).Value)
+                    End If
+                End If
+                Continue For
+            End If
+            '当前文件的AddSC结尾，因为是倒序
+            If line.IndexOf("Script*") <> -1 Then
+                Exit For
+            End If
+        Next
 
-	Private Shared Sub ProcessFile(filePath As String)
-		Console.WriteLine(filePath)
-
-		Dim txt As String = File.ReadAllText(filePath)
-		Dim lines As String() = File.ReadAllLines(filePath)
-		Array.Reverse(lines)
-
-		Dim scripts As New ArrayList()
-		Dim data As ScriptData = Nothing
-		Dim scriptStart As Boolean = False
-		For Each line As String In lines
-
-			If line.IndexOf("->RegisterSelf();") <> -1 Then
-				scriptStart = True
-				data = New ScriptData()
-				Continue For
-			End If
-			If scriptStart Then
-				If line.IndexOf("= new Script") <> -1 Then
-					scriptStart = False
-					scripts.Add(data)
-					data = Nothing
-					Continue For
-				End If
-				Dim r As New Regex("pNewScript->([a-zA-Z]+) *= *&?([""_a-zA-Z0-9]+);")
-				Dim m As Match = r.Match(line)
-				If m.Success Then
-					If m.Groups(1).Value.Equals("Name") Then
-						data.name = m.Groups(2).Value.Trim(New Char() {""""c})
-					Else
-						data.AddMethod(m.Groups(2).Value)
-					End If
-				End If
-				Continue For
-			End If
-
-			If line.IndexOf("Script*") <> -1 Then
-				Exit For
-			End If
-		Next
-		If scripts.Count <> 0 Then
-			Dim register As String = ""
-			For Each sd As ScriptData In scripts
-				Dim ss As String = ""
-				Console.WriteLine(sd)
-				Dim minPos As Integer = txt.Length
-				For Each method As String In sd.methods
-					Dim s As String = GetMethod(method, txt, minPos)
-					ss += s & vbLf
-				Next
-				If sd.instanceName IsNot Nothing Then
-					Dim s As String = GetMethod("struct " & sd.instanceName, txt, minPos)
-					ss += s & vbLf
-				End If
-				If sd.aiName IsNot Nothing Then
-					Dim ai As String = GetMethod("struct " & sd.aiName, txt, minPos)
-					If ai IsNot Nothing Then
-						Dim sm As String = Nothing
-						Dim r As New Regex("\S+ " & sd.aiName & "::([^( ]+)")
-						While r.IsMatch(txt)
-							Dim m As Match = r.Match(txt)
-							Dim startPos As Integer = m.Index
-							Dim endPos As Integer = txt.IndexOf(vbLf & "}", startPos)
-							If endPos <> -1 Then
-								endPos += 2
-							End If
-							While System.Math.Max(System.Threading.Interlocked.Increment(endPos), endPos - 1) >= 0 AndAlso endPos < txt.Length
-								If txt(endPos) = ControlChars.Lf Then
-									Exit While
-								End If
-							End While
-							sm = txt.Substring(startPos, endPos - startPos)
-							txt = txt.Remove(startPos, endPos - startPos)
-							If sm IsNot Nothing Then
-								sm = sm.Replace(vbLf, vbLf & "    ")
-								Dim r1 As New Regex("\S+ " & Convert.ToString(m.Groups(1)) & " *\([^)]*\) *;")
-								Dim m1 As Match = r1.Match(ai)
-								If m1.Success Then
-									ai = r1.Replace(ai, sm)
-								End If
-							End If
-						End While
-						ai = ai.Replace(sd.aiName & "::", "")
-						ss += ai & vbLf
-					End If
-				End If
-				If ss.Length <> 0 Then
-					Dim typeName As String = "UnknownScript"
-					Select Case sd.type
-						Case 1
-							typeName = "CreatureScript"
-							Exit Select
-						Case 2
-							typeName = "InstanceMapScript"
-							Exit Select
-						Case Else
-							If sd.name.IndexOf("npc") = 0 Then
-								typeName = "CreatureScript"
-							ElseIf sd.name.IndexOf("mob") = 0 Then
-								typeName = "CreatureScript"
-							ElseIf sd.name.IndexOf("boss_") = 0 Then
-								typeName = "CreatureScript"
-							ElseIf sd.name.IndexOf("item_") = 0 Then
-								typeName = "ItemScript"
-							ElseIf sd.name.IndexOf("go_") = 0 Then
-								typeName = "GameObjectScript"
-							ElseIf sd.name.IndexOf("at_") = 0 Then
-								typeName = "AreaTriggerScript"
-							ElseIf sd.name.IndexOf("instance_") = 0 Then
-								typeName = "InstanceMapScript"
-							End If
-							Exit Select
-					End Select
-					If sd.instanceName IsNot Nothing Then
-						ss = ss.Replace(sd.instanceName, sd.instanceName & "_InstanceMapScript")
-					End If
-					ss = ss.Replace(vbLf, vbLf & "    ")
-					ss = "class " & sd.name & " : public " & typeName & vbLf & "{" & vbLf & "public:" & vbLf & "    " & sd.name & "() : " & typeName & "(""" & sd.name & """) { }" & vbLf & ss & vbLf & "};"
-					ss = ss.Replace("_" & sd.name, "")
-					ss = ss.Replace("AIAI", "AI")
-					ss = ss.Replace("    " & vbCr & vbLf, vbCr & vbLf)
-					ss = ss.Replace("    " & vbLf, vbLf)
-					txt = txt.Insert(minPos, ss)
-					register = "    new " & sd.name & "();" & vbLf & register
-				End If
-			Next
-			Dim r2 As New Regex("void +AddSC_([_a-zA-Z0-9]+)")
-			Dim m2 As Match = r2.Match(txt)
-			If m2.Success Then
-				txt = txt.Remove(m2.Index)
-				txt += "void AddSC_" & m2.Groups(1).Value & "()" & vbLf & "{" & vbLf & register & "}" & vbLf
-			End If
-			' File.Copy(filePath, filePath + ".bkp");
-			txt = txt.Replace(vbCr & vbLf, vbLf)
-			File.WriteAllText(filePath, txt)
-		End If
-	End Sub
+        '如果函数名不为空
+        If scripts.Count <> 0 Then
+            Dim register As String = ""
+            '循环脚本列表
+            For Each scInfo As ScriptData In scripts
+                '定义暂存的脚本所有过程字符串
+                Dim scsring As String = ""
+                '输出函数名和过程信息
+                Console.WriteLine(scInfo)
+                '定义文档最后一个字符位置用于获取内容
+                Dim minPos As Integer = cppContent.Length
+                '循环每个过程名字表，并从文档中获取过程段
+                For Each aifunction As String In scInfo.aifunctions
+                    Dim s As String = GetFunction(aifunction, cppContent, minPos)
+                    scsring += s & vbLf
+                Next
+                '如果是副本
+                If scInfo.instanceName IsNot Nothing Then
+                    '找structure函数
+                    Dim s As String = GetFunction("struct " & scInfo.instanceName, cppContent, minPos)
+                    scsring += s & vbLf
+                End If
+                '如果是生物ai
+                If scInfo.aiName IsNot Nothing Then
+                    '找structure函数
+                    Dim ai As String = GetFunction("struct " & scInfo.aiName, cppContent, minPos)
+                    '如果找structure函数
+                    If ai IsNot Nothing Then
+                        Dim sm As String = Nothing
+                        '找与该ai相关的子函数
+                        Dim r As New Regex("\S+ " & scInfo.aiName & "::([^( ]+)") '非空格(开头)后带ai名带双引号的字段
+                        While r.IsMatch(cppContent)
+                            Dim m As Match = r.Match(cppContent)
+                            Dim startPos As Integer = m.Index
+                            Dim endPos As Integer = cppContent.IndexOf(vbLf & "}", startPos)
+                            If endPos <> -1 Then
+                                endPos += 2
+                            End If
+                            While System.Math.Max(System.Threading.Interlocked.Increment(endPos), endPos - 1) >= 0 AndAlso endPos < cppContent.Length
+                                If cppContent(endPos) = ControlChars.Lf Then
+                                    Exit While
+                                End If
+                            End While
+                            '子过程内容
+                            sm = cppContent.Substring(startPos, endPos - startPos)
+                            '移除已经匹配过的内容
+                            cppContent = cppContent.Remove(startPos, endPos - startPos)
+                            If sm IsNot Nothing Then
+                                sm = sm.Replace(vbLf, vbLf & "    ")
+                                Dim r1 As New Regex("\S+ " & Convert.ToString(m.Groups(1)) & " *\([^)]*\) *;")
+                                Dim m1 As Match = r1.Match(ai)
+                                If m1.Success Then
+                                    '将原来的过程替换为新的过程
+                                    ai = r1.Replace(ai, sm)
+                                End If
+                            End If
+                        End While
+                        ai = ai.Replace(scInfo.aiName & "::", "")
+                        scsring += ai & vbLf
+                    End If
+                End If
+                If scsring.Length <> 0 Then
+                    Dim typeName As String = "UnknownScript"
+                    Select Case scInfo.type
+                        Case 1
+                            typeName = "CreatureScript"
+                            Exit Select
+                        Case 2
+                            typeName = "InstanceMapScript"
+                            Exit Select
+                        Case Else
+                            If scInfo.targetname.IndexOf("npc") = 0 Then
+                                typeName = "CreatureScript"
+                            ElseIf scInfo.targetname.IndexOf("mob") = 0 Then
+                                typeName = "CreatureScript"
+                            ElseIf scInfo.targetname.IndexOf("boss_") = 0 Then
+                                typeName = "CreatureScript"
+                            ElseIf scInfo.targetname.IndexOf("item_") = 0 Then
+                                typeName = "ItemScript"
+                            ElseIf scInfo.targetname.IndexOf("go_") = 0 Then
+                                typeName = "GameObjectScript"
+                            ElseIf scInfo.targetname.IndexOf("at_") = 0 Then
+                                typeName = "AreaTriggerScript"
+                            ElseIf scInfo.targetname.IndexOf("instance_") = 0 Then
+                                typeName = "InstanceMapScript"
+                            End If
+                            Exit Select
+                    End Select
+                    If scInfo.instanceName IsNot Nothing Then
+                        scsring = scsring.Replace(scInfo.instanceName, scInfo.instanceName & "_InstanceMapScript")
+                    End If
+                    scsring = scsring.Replace(vbLf, vbLf & "    ")
+                    scsring = "class " & scInfo.targetname & " : public " & typeName & vbLf & "{" & vbLf & "public:" & vbLf & "    " & scInfo.targetname & "() : " & typeName & "(""" & scInfo.targetname & """) { }" & vbLf & scsring & vbLf & "};"
+                    scsring = scsring.Replace("_" & scInfo.targetname, "") '删除过程中与ai相关的名字如将GossipHello_npc_spirit_guide改为GossipHello
+                    scsring = scsring.Replace("AIAI", "AI")
+                    scsring = scsring.Replace("    " & vbCr & vbLf, vbCr & vbLf)
+                    scsring = scsring.Replace("    " & vbLf, vbLf)
+                    cppContent = cppContent.Insert(minPos, scsring)
+                    register = "    new " & scInfo.targetname & "();" & vbLf & register
+                End If
+            Next
+            '获取AddSC段信息
+            Dim r2 As New Regex("void +AddSC_([_a-zA-Z0-9]+)")
+            Dim m2 As Match = r2.Match(cppContent)
+            If m2.Success Then
+                cppContent = cppContent.Remove(m2.Index)
+                cppContent += "void AddSC_" & m2.Groups(1).Value & "()" & vbLf & "{" & vbLf & register & "}" & vbLf
+            End If
+            ' File.Copy(filePath, filePath + ".bkp");
+            cppContent = cppContent.Replace(vbCr & vbLf, vbLf)
+            File.WriteAllText(filePath, cppContent)
+        End If
+    End Sub
 End Class
